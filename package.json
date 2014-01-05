@@ -1,6 +1,6 @@
 {
   "name": "subclass-error",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Workaround for subclassing errors. Both instanceof and stack are functional.",
   "main": "subclass-error.js",
   "scripts": {

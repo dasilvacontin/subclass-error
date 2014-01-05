@@ -6,7 +6,7 @@ Workaround for subclassing errors. Both instanceof and stack are functional.
 ## Use:
 
 ```bash
-$ npm install create-error
+$ npm install subclass-error
 ```
 
 ```js
