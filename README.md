@@ -6,11 +6,11 @@ Workaround for subclassing errors. Both instanceof and stack are functional.
 ## Use:
 
 ```bash
-$ npm   install create-error
+$ npm install create-error
 ```
 
 ```js
-var SubclassError = require('subclass-error');
+var SubclassError = require('./subclass-error');
 
 var ClientError = SubclassError ("ClientError", {statusCode:400});
 var ForbiddenError = SubclassError ("ForbiddenError", ClientError, {statusCode:403});
@@ -20,12 +20,14 @@ var clientErr = new ClientError ();
 clientErr instanceof Error // true
 clientErr instanceof ClientError // true
 clientErr instanceof ForbiddenError // false
+clientErr.statusCode // 400
 
 var forbidErr = new ForbiddenError ();
 
 forbidErr instanceof Error // true
 forbidErr instanceof ClientError // true
 forbidErr instanceof ForbiddenError // true
+forbidErr.statusCode // 403
 
 function hungry () {
 	throw new ForbiddenError ("wow, much forbidden, very subclass");
