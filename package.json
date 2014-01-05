@@ -1,0 +1,27 @@
+{
+  "name": "subclass-error",
+  "version": "0.0.1",
+  "description": "Workaround for subclassing errors. Both instanceof and stack are functional.",
+  "main": "subclass-error.js",
+  "scripts": {
+    "test": "echo \"node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dasilvacontin/subclass-error.git"
+  },
+  "keywords": [
+    "error",
+    "subclass",
+    "instanceof",
+    "stack"
+  ],
+  "author": {
+    "name": "David da Silva Contin",
+    "web": "https://github.com/dasilvacontin/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dasilvacontin/subclass-error/issues"
+  }
+}
