@@ -10,7 +10,7 @@ $ npm install create-error
 ```
 
 ```js
-var SubclassError = require('./subclass-error');
+var SubclassError = require('subclass-error');
 
 var ClientError = SubclassError ("ClientError", {statusCode:400});
 var ForbiddenError = SubclassError ("ForbiddenError", ClientError, {statusCode:403});
