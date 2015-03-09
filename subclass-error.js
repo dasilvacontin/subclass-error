@@ -34,7 +34,7 @@
             this.stack = goodStack.join('\n');
 
         };
-        e.prototype = new IntermediateInheritor()
+        e.prototype = new IntermediateInheritor();
         e.prototype.constructor = e;
         e.prototype.name = name;
         for (var prop in props) {
