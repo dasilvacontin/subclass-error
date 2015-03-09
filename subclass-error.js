@@ -12,6 +12,8 @@
         root.SubclassError = factory();
   }
 }(this, function () {
+    var IntermediateInheritor = function() {}
+    IntermediateInheritor.prototype = Error.prototype;
 
     function SubclassError (name, error, props) {
         if (name === undefined) throw new Error ("Name of subclass must be provided as first argument.");
@@ -32,7 +34,7 @@
             this.stack = goodStack.join('\n');
 
         };
-        e.prototype = new error ();
+        e.prototype = new IntermediateInheritor()
         e.prototype.constructor = e;
         e.prototype.name = name;
         for (var prop in props) {
