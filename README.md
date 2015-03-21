@@ -1,6 +1,9 @@
 subclass-error
 ==============
 
+[![Build Status](https://travis-ci.org/dasilvacontin/subclass-error.svg)](https://travis-ci.org/dasilvacontin/subclass-error)
+
+
 Workaround for subclassing errors. Both instanceof and stack are functional.
 
 ## Use:
