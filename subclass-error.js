@@ -13,13 +13,14 @@
     root.SubclassError = factory()
   }
 }(this, function () {
+  var ErrorInheritor = function () {}
   function SubclassError (name, BaseError, props) {
     if (name === undefined) throw new Error('Name of subclass must be provided as first argument.')
     if (!(BaseError instanceof Function)) {
       props = BaseError
       BaseError = Error
     }
-
+    ErrorInheritor.prototype = BaseError.prototype
     var e = function (message) {
       this.message = message
 
@@ -30,7 +31,7 @@
       if (message) goodStack[0] += ': ' + message
       this.stack = goodStack.join('\n')
     }
-    e.prototype = new BaseError()
+    e.prototype = new ErrorInheritor()
     e.prototype.constructor = e
     e.prototype.name = name
     for (var prop in props) {
