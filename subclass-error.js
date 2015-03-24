@@ -22,7 +22,7 @@
     }
     ErrorInheritor.prototype = BaseError.prototype
     var e = function (message) {
-      this.message = message
+      if (message) this.message = message
 
       // stack "hack"
       var goodStack = (new Error()).stack.split('\n')
