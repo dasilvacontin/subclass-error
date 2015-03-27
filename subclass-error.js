@@ -25,7 +25,9 @@
       if (message) this.message = message
 
       // stack "hack"
-      var goodStack = (new Error()).stack.split('\n')
+      var sample = (new Error())
+      if (!sample.stack) sample.stack = ''
+      var goodStack = sample.stack.split('\n')
       goodStack.splice(1, 1)
       goodStack[0] = name
       if (message) goodStack[0] += ': ' + message
