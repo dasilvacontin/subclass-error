@@ -1,7 +1,9 @@
 subclass-error
 ==============
-
-[![Build Status](https://travis-ci.org/dasilvacontin/subclass-error.svg)](https://travis-ci.org/dasilvacontin/subclass-error)
+[![NPM version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Dependency Status][daviddm-url]][daviddm-image]
+[![NPM downloads per month][downloads-image]][downloads-url]
 
 
 Workaround for subclassing errors. Both instanceof and stack are functional.
@@ -55,3 +57,12 @@ I didn't find any other workaround in which both 'instanceof' and 'stack' work a
 ### License
 
 MIT
+
+[npm-url]: https://npmjs.org/package/subclass-error
+[npm-image]: https://badge.fury.io/js/subclass-error.svg
+[downloads-url]: https://www.npmjs.org/package/subclass-error
+[downloads-image]: http://img.shields.io/npm/dm/subclass-error.svg
+[travis-url]: https://travis-ci.org/dasilvacontin/subclass-error
+[travis-image]: https://travis-ci.org/dasilvacontin/subclass-error.svg?branch=master
+[daviddm-url]: https://david-dm.org/dasilvacontin/subclass-error.svg?theme=shields.io
+[daviddm-image]: https://david-dm.org/dasilvacontin/subclass-error
