@@ -1,5 +1,5 @@
-subclass-error
-==============
+# subclass-error
+
 [![NPM version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][daviddm-url]][daviddm-image]
@@ -7,19 +7,21 @@ subclass-error
 [![NPM downloads per month][downloads-image]][downloads-url]
 
 
-Workaround for subclassing errors. Both instanceof and stack are functional.
+Workaround for subclassing errors. Both `instanceof` and `stack` are functional.
 
-## Use:
+## Install
 
 ```bash
-$ npm install subclass-error
+$ npm install --save subclass-error
 ```
+
+## Usage
 
 ```js
 var SubclassError = require('subclass-error');
 
-var ClientError = SubclassError ("ClientError", {statusCode:400});
-var ForbiddenError = SubclassError ("ForbiddenError", ClientError, {statusCode:403});
+var ClientError = SubclassError("ClientError", {statusCode:400});
+var ForbiddenError = SubclassError("ForbiddenError", ClientError, {statusCode:403});
 
 var clientErr = new ClientError ();
 
@@ -49,15 +51,15 @@ hungry();
 
 ### SubclassError(name, [error, properties])
 
-Creates a new subclass of 'error' (if specified) or Error (by default). The instances of the new subclass will have the same properties as those provided in the optional 'properties' parameter.
+Creates a new subclass of `error` (if given) or `Error` (by default). The instances of the new subclass will inherit data in the optional `properties` parameter.
 
-### Notes:
+## Why?
 
-I didn't find any other workaround in which both 'instanceof' and 'stack' work as you would expect, so I ended up creating this.
+I couldn't find any existing solution in which both `instanceof` and `stack` worked as you would expect, back when I created this module.
 
-### License
+## License
 
-MIT
+MIT © [David da Silva](http://dasilvacont.in)
 
 [npm-url]: https://npmjs.org/package/subclass-error
 [npm-image]: https://badge.fury.io/js/subclass-error.svg
