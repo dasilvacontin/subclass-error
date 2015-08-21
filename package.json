@@ -5,8 +5,9 @@
   "main": "subclass-error.js",
   "scripts": {
     "lint": "standard",
-    "unit-test": "mocha --require test/common.js",
-    "test": "npm run lint && npm run unit-test"
+    "coverage": "istanbul cover _mocha -- -R spec",
+    "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "test": "npm run lint && npm run coverage"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,10 @@
   },
   "devDependencies": {
     "chai": "^2.1.2",
+    "coveralls": "^2.11.4",
+    "istanbul": "^0.3.18",
     "mocha": "^2.2.1",
+    "mocha-lcov-reporter": "0.0.2",
     "standard": "^3.2.0"
   }
 }
