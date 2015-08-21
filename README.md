@@ -3,6 +3,7 @@ subclass-error
 [![NPM version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][daviddm-url]][daviddm-image]
+[![Coverage Status][coveralls-image]][coveralls-url]
 [![NPM downloads per month][downloads-image]][downloads-url]
 
 
@@ -66,3 +67,5 @@ MIT
 [travis-image]: https://travis-ci.org/dasilvacontin/subclass-error.svg?branch=master
 [daviddm-url]: https://david-dm.org/dasilvacontin/subclass-error.svg?theme=shields.io
 [daviddm-image]: https://david-dm.org/dasilvacontin/subclass-error
+[coveralls-url]: https://coveralls.io/r/dasilvacontin/subclass-error?branch=master
+[coveralls-image]: https://coveralls.io/repos/dasilvacontin/subclass-error/badge.svg?branch=master
