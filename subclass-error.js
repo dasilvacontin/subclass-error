@@ -26,6 +26,12 @@
       if (message) this.message = message
 
       // stack "hack"
+      // some random comment
+      // for testing purposes
+      // I'll comment on this line
+      // and then modify that line in a subsequent commit
+      // i'll also comment on this line, which I'll not modify
+      // just for comparing purposes
       var sample = (new Error())
       if (!sample.stack) sample.stack = ''
       var niceStack = sample.stack.split('\n')
