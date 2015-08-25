@@ -16,6 +16,7 @@
   var ErrorInheritor = function () {}
   function SubclassError (name, BaseError, props) {
     if (name === undefined) throw new Error('Name of subclass must be provided as first argument.')
+    if (typeof name !== 'string') throw new Error('Expected first argument to be a string in SubclassError(name, [BaseError, [props]])')
     if (!(BaseError instanceof Function)) {
       props = BaseError
       BaseError = Error
@@ -27,11 +28,11 @@
       // stack "hack"
       var sample = (new Error())
       if (!sample.stack) sample.stack = ''
-      var goodStack = sample.stack.split('\n')
-      goodStack.splice(1, 1)
-      goodStack[0] = name
-      if (message) goodStack[0] += ': ' + message
-      this.stack = goodStack.join('\n')
+      var niceStack = sample.stack.split('\n')
+      niceStack.splice(1, 1)
+      niceStack[0] = name
+      if (message) niceStack[0] += ': ' + message
+      this.stack = niceStack.join('\n')
     }
     e.prototype = new ErrorInheritor()
     e.prototype.constructor = e
