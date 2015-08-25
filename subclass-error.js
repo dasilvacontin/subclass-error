@@ -28,7 +28,7 @@
       // stack "hack"
       // some random comment
       // for testing purposes
-      // I'll comment on this line
+      // I'll comment on this line (hi i'm an edit)
       // and then modify that line in a subsequent commit
       // i'll also comment on this line, which I'll not modify
       // just for comparing purposes
