@@ -16,6 +16,7 @@
   var ErrorInheritor = function () {}
   function SubclassError (name, BaseError, props) {
     if (name === undefined) throw new Error('Name of subclass must be provided as first argument.')
+    if (typeof name !== 'string') throw new Error('Expected first argument to be a string in SubclassError(name, [BaseError, [props]])')
     if (!(BaseError instanceof Function)) {
       props = BaseError
       BaseError = Error
