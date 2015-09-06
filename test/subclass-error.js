@@ -51,14 +51,14 @@ describe('SubclassError', function () {
   describe('stack trace', function () {
     it('should be correct', function () {
       var NoFoodError = SubclassError('NoFoodError')
-      function eat () { throw new NoFoodError() }
+      function eat () { throw new NoFoodError('Nothing in the fridge') }
       function hungry () { eat() }
 
       try {
         hungry()
       } catch (e) {
         var lines = e.stack.split('\n')
-        lines[0].should.equal('NoFoodError')
+        lines[0].should.equal('NoFoodError: Nothing in the fridge')
         ;(!!lines[1].match(/at eat .*test\/subclass-error\.js/)).should.be.true
         ;(!!lines[2].match(/at hungry .*test\/subclass-error\.js/)).should.be.true
         ;(!!lines[3].match(/at Context.<anonymous> .*test\/subclass-error\.js/)).should.be.true
