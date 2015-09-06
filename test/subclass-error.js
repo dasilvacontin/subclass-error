@@ -51,12 +51,9 @@ describe('SubclassError', function () {
   describe('stack trace', function () {
     it('should be correct', function () {
       var NoFoodError = SubclassError('NoFoodError')
-      function eat () {
-        throw new NoFoodError()
-      }
-      function hungry () {
-        eat()
-      }
+      function eat () { throw new NoFoodError() }
+      function hungry () { eat() }
+
       try {
         hungry()
       } catch (e) {
