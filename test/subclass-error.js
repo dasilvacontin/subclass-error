@@ -30,14 +30,16 @@ describe('SubclassError', function () {
         var subclassName = 'ClientError'
         var props = {code: 400}
         var ClientError = Error.subclass(subclassName, props)
-        ClientError()
+        var err = new ClientError()
+        err.should.be.an.instanceof(ClientError)
         SubclassError.SubclassError.should.have
         .been.calledWith(subclassName, Error, props)
 
         subclassName = 'ForbiddenError'
         props = {code: 403}
         var ForbiddenError = ClientError.subclass(subclassName, props)
-        ForbiddenError()
+        err = new ForbiddenError()
+        err.should.be.an.instanceof(ForbiddenError)
         SubclassError.SubclassError.should.have
         .been.calledWith(subclassName, ClientError, props)
       })
@@ -86,9 +88,9 @@ describe('SubclassError', function () {
       } catch (e) {
         var lines = e.stack.split('\n')
         lines[0].should.equal('NoFoodError: Nothing in the fridge')
-        ;(!!lines[1].match(/at eat .*test\/subclass-error\.js/)).should.be.true
-        ;(!!lines[2].match(/at hungry .*test\/subclass-error\.js/)).should.be.true
-        ;(!!lines[3].match(/at Context.<anonymous> .*test\/subclass-error\.js/)).should.be.true
+        lines[1].should.contain('at eat')
+        lines[2].should.contain('at hungry')
+        lines[3].should.contain('at Context.<anonymous>')
       }
     })
   })

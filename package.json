@@ -7,6 +7,8 @@
     "lint": "standard",
     "coverage": "istanbul cover _mocha -- -R spec",
     "test": "npm run lint && npm run coverage",
+    "test-browser": "zuul -- test/*.js",
+    "test-browser-local": "zuul --local 8080 -- test/*.js",
     "travis": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
@@ -35,6 +37,7 @@
     "mocha-lcov-reporter": "0.0.2",
     "sinon": "^1.16.1",
     "sinon-chai": "^2.8.0",
-    "standard": "^3.2.0"
+    "standard": "^3.2.0",
+    "zuul": "^3.4.0"
   }
 }
