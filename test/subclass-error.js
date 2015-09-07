@@ -1,4 +1,5 @@
-/*global describe, it*/
+/* global describe, before, it, after */
+var sinon = require('sinon')
 var SubclassError = require('../subclass-error')
 
 describe('SubclassError', function () {
@@ -18,6 +19,32 @@ describe('SubclassError', function () {
         var invalidName = SubclassError({})
         invalidName()
       }).should.throw(/expect.*string/i)
+    })
+
+    describe('sugar', function () {
+      before(function () {
+        sinon.spy(SubclassError, 'SubclassError')
+      })
+
+      it('should populate error constructor argument', function () {
+        var subclassName = 'ClientError'
+        var props = {code: 400}
+        var ClientError = Error.subclass(subclassName, props)
+        ClientError()
+        SubclassError.SubclassError.should.have
+        .been.calledWith(subclassName, Error, props)
+
+        subclassName = 'ForbiddenError'
+        props = {code: 403}
+        var ForbiddenError = ClientError.subclass(subclassName, props)
+        ForbiddenError()
+        SubclassError.SubclassError.should.have
+        .been.calledWith(subclassName, ClientError, props)
+      })
+
+      after(function () {
+        SubclassError.SubclassError.restore()
+      })
     })
   })
 

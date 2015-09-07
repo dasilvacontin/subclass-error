@@ -13,6 +13,20 @@
     root.SubclassError = factory()
   }
 }(this, function () {
+  /**
+   * Helper/sugar function so that you can do stuff like:
+   *
+   * ```js
+   * var ClientError = Error.subclass('ClientError', {code: 400})
+   * var ForbiddenError = ClientError.subclass('ForbiddenError', {code: 403})
+   * ```
+   */
+  function SubclassSugar () {
+    // insert error constructor as second argument
+    Array.prototype.splice.call(arguments, 1, 0, this.prototype.constructor)
+    return SubclassError.SubclassError.apply(this, arguments)
+  }
+
   var ErrorInheritor = function () {}
   function SubclassError (name, BaseError, props) {
     if (name === undefined) throw new Error('Name of subclass must be provided as first argument.')
@@ -34,6 +48,7 @@
       if (message) goodStack[0] += ': ' + message
       this.stack = goodStack.join('\n')
     }
+    e.subclass = SubclassSugar
     e.prototype = new ErrorInheritor()
     e.prototype.constructor = e
     e.prototype.name = name
@@ -42,6 +57,12 @@
     }
     return e
   }
+
+  // ugly stuff so that spies can be used for testing
+  SubclassError.SubclassError = SubclassError
+
+  // add static sugar to Error
+  Error.subclass = SubclassSugar
 
   return SubclassError
 }))
