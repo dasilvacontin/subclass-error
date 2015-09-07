@@ -3,20 +3,20 @@ var sinon = require('sinon')
 var SubclassError = require('../subclass-error')
 
 describe('SubclassError', function () {
-  var ClientError = SubclassError('ClientError', {statusCode: 400})
-  var ForbiddenError = SubclassError('ForbiddenError', ClientError, {statusCode: 403})
+  var ClientError = Error.subclass('ClientError', {statusCode: 400})
+  var ForbiddenError = ClientError.subclass('ForbiddenError', {statusCode: 403})
 
   describe('constructor', function () {
     it('should throw when subclass name is not provided', function () {
       (function () {
-        var unnamed = SubclassError()
+        var unnamed = Error.subclass()
         unnamed()
       }).should.throw(/name.*first/i)
     })
 
     it('should throw when subclass name is not a string', function () {
       (function () {
-        var invalidName = SubclassError({})
+        var invalidName = Error.subclass({})
         invalidName()
       }).should.throw(/expect.*string/i)
     })
@@ -68,8 +68,8 @@ describe('SubclassError', function () {
     })
 
     it('should be inherited in instances of a subclass', function () {
-      var FruitError = SubclassError('FruitError', {type: 'food'})
-      var AppleError = SubclassError('AppleError', FruitError)
+      var FruitError = Error.subclass('FruitError', {type: 'food'})
+      var AppleError = FruitError.subclass('AppleError')
       var err = new AppleError()
       err.type.should.equal('food')
     })
@@ -77,7 +77,7 @@ describe('SubclassError', function () {
 
   describe('stack trace', function () {
     it('should be correct', function () {
-      var NoFoodError = SubclassError('NoFoodError')
+      var NoFoodError = Error.subclass('NoFoodError')
       function eat () { throw new NoFoodError('Nothing in the fridge') }
       function hungry () { eat() }
 
