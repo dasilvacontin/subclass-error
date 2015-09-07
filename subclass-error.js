@@ -21,10 +21,9 @@
    * var ForbiddenError = ClientError.subclass('ForbiddenError', {code: 403})
    * ```
    */
-  function SubclassSugar () {
+  function SubclassSugar (name, props) {
     // insert error constructor as second argument
-    Array.prototype.splice.call(arguments, 1, 0, this.prototype.constructor)
-    return SubclassError.SubclassError.apply(this, arguments)
+    return SubclassError.SubclassError.call(this, name, this.prototype.constructor, props)
   }
 
   var ErrorInheritor = function () {}
