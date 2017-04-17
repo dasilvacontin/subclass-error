@@ -39,13 +39,19 @@
       if (message) this.message = message
 
       // stack "hack"
+      // some random comment
+      // for testing purposes
+      // I'll comment on this line (hi i'm an edit)
+      // and then modify that line in a subsequent commit
+      // i'll also comment on this line, which I'll not modify
+      // just for comparing purposes
       var sample = (new Error())
       if (!sample.stack) sample.stack = ''
-      var goodStack = sample.stack.split('\n')
-      goodStack.splice(1, 1)
-      goodStack[0] = name
-      if (message) goodStack[0] += ': ' + message
-      this.stack = goodStack.join('\n')
+      var niceStack = sample.stack.split('\n')
+      niceStack.splice(1, 1)
+      niceStack[0] = name
+      if (message) niceStack[0] += ': ' + message
+      this.stack = niceStack.join('\n')
     }
     e.subclass = SubclassSugar
     e.prototype = new ErrorInheritor()
